@@ -64,6 +64,7 @@
 
     if (!audio) {return;} // exit func for any keys outside the specified ones
 
+    audio.currentTime = 0; // so you can press the key as many times as you want
     audio.play();
   });
 </script>
