@@ -66,15 +66,21 @@
 
     key.classList.add('playing');
 
-    setTimeout(function() {
-      key.classList.remove('playing');
-    }, 50);
-
     if (!audio) {return;} // exit func for any keys outside the specified ones
 
     audio.currentTime = 0; // so you can press the key as many times as you want
     audio.play();
   });
+
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') {return;}
+    console.log(e.propertyName);
+    console.log(this);
+    this.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 
