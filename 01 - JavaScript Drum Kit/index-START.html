@@ -60,7 +60,15 @@
 <script>
   document.addEventListener('keydown', function(e) {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
     console.log(audio);
+    console.log('key: ', key);
+
+    key.classList.add('playing');
+
+    setTimeout(function() {
+      key.classList.remove('playing');
+    }, 50);
 
     if (!audio) {return;} // exit func for any keys outside the specified ones
 
